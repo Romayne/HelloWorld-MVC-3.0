@@ -1,0 +1,28 @@
+﻿@model HelloWorldMVC.Models.Comments.CommentsModel
+                   
+@Html.ValidationSummary(true, "Comment submitted unsuccessfully. Please correct the errors and try again.")
+
+@Html.HiddenFor(m => m.Id)
+@Html.HiddenFor(m => m.ApplicationId)
+@Html.HiddenFor(m => m.Created)
+
+<fieldset>
+    <legend>Form</legend>
+    <ol>
+        <li>
+            @Html.LabelFor(m => m.Creator)
+            @Html.TextBoxFor(m => m.Creator)
+            @Html.ValidationMessageFor(m => m.Creator)
+        </li>
+        <li>
+            @Html.LabelFor(m => m.Details)
+            @Html.TextAreaFor(m => m.Details)
+            @Html.ValidationMessageFor(m => m.Details)
+        </li>
+        <li>
+            @Html.LabelFor(m => m.IsPublic)
+            @Html.CheckBoxFor(m => m.IsPublic)
+        </li>
+    </ol>
+    <input type="submit" value="@ViewBag.submitText" />
+</fieldset>

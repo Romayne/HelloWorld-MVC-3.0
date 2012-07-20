@@ -1,0 +1,36 @@
+﻿@model HelloWorldMVC.Models.Comments.CommentsModel
+           
+@{
+    ViewBag.Title = "Update";
+}
+
+<hgroup class="title">
+    <h1>Comments Administration:</h1>
+    <h2>Update Comment</h2>
+</hgroup>
+<article>
+    @if (Model.Id != 0)
+    {
+        using (Html.BeginForm("Update", "Comments"))
+        {
+            @Html.Partial("_Form", Model)
+        }
+    }
+    else
+    {
+        <p class="error">
+            <b>The current comment could not be loaded or does not exist.</b>
+        </p>
+    }
+</article>
+<aside>
+    @Html.Partial("_CommentsOptions")
+</aside>
+
+@if (ViewBag.postBack == "success")
+{
+    ViewBag.notificationTitle = "Comments Notification";
+    ViewBag.notificationText = "Comment has been successfully updated!";
+    
+    @Html.Partial("_Notification");
+}

@@ -1,0 +1,45 @@
+﻿@model HelloWorldMVC.Models.Comments.CommentsModel
+           
+@{
+    ViewBag.Title = "Delete";
+}
+
+<hgroup class="title">
+    <h1>Comments Administration:</h1>
+    <h2>Delete Comment</h2>
+</hgroup>
+<article>
+    @if (Model.Id != 0)
+    {
+        using (Html.BeginForm("Delete", "Comments"))
+        {
+            @Html.ValidationSummary(true, "An error has occured")
+
+            @Html.HiddenFor(m => m.Id)
+            
+            <fieldset>
+            <legend>Form</legend>
+                Are you sure that you want to delete the comment <span class="comment">@Model.Details</span> written by <b>@Model.Creator</b>?
+                <br/><br/>
+                <input type="submit" value="Delete" />
+            </fieldset>
+        }
+    }
+    else
+    {
+        <p class="error">
+            <b>The current comment could not be loaded or does not exist.</b>
+        </p>
+    }
+</article>
+<aside>
+    @Html.Partial("_CommentsOptions")
+</aside>
+
+@if (ViewBag.postBack == "success")
+{
+    ViewBag.notificationTitle = "Comments Notification";
+    ViewBag.notificationText = "Comment has been successfully deleted!";
+    
+    @Html.Partial("_Notification");
+}

@@ -1,0 +1,12 @@
+﻿    <div id="notification">
+        <div id="notice">
+            <h1>@ViewBag.notificationTitle</h1>
+            <p>@ViewBag.notificationText</p>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+        $(function () {
+            return $("#notification").notify().notify("create", "notice");
+        });
+    </script> 

@@ -1,0 +1,7 @@
+Thumbs.db
+
+#Visual Studio files
+_ReSharper*/
+[Bb]bin
+[Db]ebug*/
+TestResults*/

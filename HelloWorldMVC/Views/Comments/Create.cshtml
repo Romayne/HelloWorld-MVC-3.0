@@ -1,0 +1,27 @@
+﻿@model HelloWorldMVC.Models.Comments.CommentsModel
+       
+@{
+    ViewBag.Title = "Create Comment";
+}
+
+<hgroup class="title">
+    <h1>Comments Administration:</h1>
+    <h2>Create Comment</h2>
+</hgroup>
+<article>
+    @using (Html.BeginForm("Create", "Comments"))
+    {
+        @Html.Partial("_Form", Model)
+    }
+</article>
+<aside>
+    @Html.Partial("_CommentsOptions")
+</aside>
+
+@if (ViewBag.postBack == "success")
+{
+    ViewBag.notificationTitle = "Comments Notification";
+    ViewBag.notificationText = "Comment has been successfully created!";
+    
+    @Html.Partial("_Notification");
+}

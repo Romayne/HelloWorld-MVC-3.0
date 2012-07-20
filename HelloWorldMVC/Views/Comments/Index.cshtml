@@ -1,0 +1,36 @@
+﻿@model IEnumerable<HelloWorldMVC.Models.Comments.CommentsModel>
+       
+@{
+    ViewBag.Title = "Comments";
+}
+
+<hgroup class="title">
+    <h1>Comments Administration</h1>
+</hgroup>
+<article>
+    <p>
+        Here you can moderate comments that have been added to the database.
+    </p>
+    <p>
+        Use the options to the right to continue.
+    </p>
+
+    @if (Model.Any())
+    {
+        foreach (var comment in Model)
+        {
+            <div class="comment">
+                @comment.Details
+
+                <div class="author">
+                    Written by <b>@comment.Creator</b> on @comment.Created<br/>
+
+                    @Html.ActionLink("Edit", "Update", "Comments", new { id = comment.Id }, null) | @Html.ActionLink("Delete", "Delete", "Comments", new { id = comment.Id }, null)
+                </div>
+            </div>
+        }
+    }
+</article>
+<aside>
+    @Html.Partial("_CommentsOptions")
+</aside>
